@@ -25,5 +25,9 @@ export default {
   carousel: {
     prev: 'Previous visual',
     next: 'Next visual'
+  },
+  datePicker: {
+    prev: 'Previous period',
+    next: 'Next period'
   }
 }

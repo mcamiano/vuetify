@@ -162,6 +162,9 @@ describe('VDatePickerHeader.ts', () => {
     const input = jest.fn()
     wrapper.vm.$on('input', input)
 
+    expect(wrapper.findAll('button.v-btn').at(0).element.getAttribute('aria-label')).not.toBeNull()
+    expect(wrapper.findAll('button.v-btn').at(1).element.getAttribute('aria-label')).not.toBeNull()
+
     wrapper.findAll('button.v-btn').at(0).trigger('click')
     expect(input).toHaveBeenCalledWith('2005-11')
 

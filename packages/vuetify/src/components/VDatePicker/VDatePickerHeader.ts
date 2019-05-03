@@ -76,12 +76,15 @@ export default mixins(
         (change < 0 && this.min && this.calculateChange(change) < this.min) ||
         (change > 0 && this.max && this.calculateChange(change) > this.max)
 
+      const orientation = ((change < 0) === !this.$vuetify.rtl)
+
       return this.$createElement(VBtn, {
         props: {
           dark: this.dark,
           disabled,
           icon: true,
-          light: this.light
+          light: this.light,
+          ariaLabel: orientation ? '$vuetify.datePicker.prev' : '$vuetify.datePicker.next'
         },
         nativeOn: {
           click: (e: Event) => {
@@ -90,7 +93,7 @@ export default mixins(
           }
         }
       }, [
-        this.$createElement(VIcon, ((change < 0) === !this.$vuetify.rtl) ? this.prevIcon : this.nextIcon)
+        this.$createElement(VIcon, orientation ? this.prevIcon : this.nextIcon)
       ])
     },
     calculateChange (sign: number) {
